@@ -1,0 +1,18 @@
+# ~/etc/profile - configuration for login shells
+
+# Load profile configuration snippets.
+if [ -d "${HOME}/etc/profile.d" ]; then
+    for i in ${HOME}/etc/profile.d/*.sh; do
+        if [ -r "$i" ]; then
+            . "$i"
+        fi
+    done
+    unset i
+fi
+
+# Load `~/.bashrc`, if warranted.
+if [ -n "$BASH_VERSION" ]; then
+    if [ -f "${HOME}/.bashrc" ]; then
+        . "${HOME}.bashrc"
+    fi
+fi
